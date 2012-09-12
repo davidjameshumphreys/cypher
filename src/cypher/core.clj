@@ -8,9 +8,10 @@
 (defn rotchar
   "rotate char"
   [c]
+	(let [f #(first (drop (+ 13 (- (int c) (int %1))) (cycle (seq %2))))]
 	(cond
      	(Character/isUpperCase c)
-     		(first (drop (+ 13 (- (int c) (int \A))) (cycle (seq "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))))
+     		(f \A "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     	(Character/isLowerCase c)
-     		(first (drop (+ 13 (- (int c) (int \a))) (cycle (seq "abcdefghijklmnopqrstuvwxyz"))))
-      	:else c))
+     		(f \a "abcdefghijklmnopqrstuvwxyz")
+      	:else c)))

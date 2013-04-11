@@ -1,10 +1,5 @@
 (ns cypher.core)
 
-(defn rot13
-  "Encrypt a message"
-  [message]
- 	(reduce str (map rotchar message)))
-
 (defn rotchar
   "rotate char"
   [c]
@@ -15,3 +10,8 @@
     	(Character/isLowerCase c)
      		(f \a "abcdefghijklmnopqrstuvwxyz")
       	:else c)))
+
+(defn rot13
+  "Encrypt a message"
+  [message]
+ 	(reduce str (map rotchar message)))
